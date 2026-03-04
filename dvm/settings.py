@@ -173,3 +173,7 @@ LOGOUT_REDIRECT_URL = "login"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
+EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+MAILJET_API_KEY = '9940f75dc1a84c01883099dcfbe71d8b'
+MAILJET_API_SECRET = '585cbc464d977f68345895c10b6f6b11'

@@ -38,12 +38,13 @@ def add_announcements(request,pk):
             )
             subject = req_course.course_name+":"+form.cleaned_data['title']
             message = form.cleaned_data['msg']+"\nfrom:"+str(req_prof)
-            from_email =  settings.EMAIL_HOST_USER
+            from_email =  "f20231017@pilani.bits-pilani.ac.in"
             recipient_list = []
             email_queryset = Students.objects.filter(courses__course__pk=pk).values("user__email")
             for email in email_queryset:
                 recipient_list.append(email["user__email"])
             send_mail(subject,message,from_email,recipient_list)
+            print(subject,message,from_email,recipient_list)
             new_ann.save()
             return redirect("prof-coursedetail",pk=req_course.pk)
     form = AddAnnouncementForm()

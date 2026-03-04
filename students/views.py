@@ -18,7 +18,7 @@ def get_current_sem():
         curr_sem=Semester.objects.get(start_date__lt=todays_date,end_date__gt=todays_date)
         return curr_sem
     except Semester.DoesNotExist:
-        return Semester.objects.filter(end_day__lt=todays_date).order_by("-end_day")[0]
+        return Semester.objects.filter(end_date__lt=todays_date).order_by("-end_date")[0]
 
 class ProfileCreationView(StudentLoginRequiredMixin,View):
     def get(self,request):
